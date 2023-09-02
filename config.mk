@@ -14,8 +14,8 @@
 LOCAL_PATH := $(call my-dir)
 include $(call all-subdir-makefiles,$(LOCAL_PATH))
 
-PRODUCT_PACKAGE_OVERLAYS += vendor/addons/overlay/common
-PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/addons/overlay/common
+PRODUCT_PACKAGE_OVERLAYS += packages/overlays/LMODroid/overlay/common
+PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += packages/overlays/LMODroid/overlay/common
 
 # Fonts
 PRODUCT_PACKAGES += \
@@ -114,162 +114,18 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     GesturalNavigationOverlayLong \
     GesturalNavigationOverlayMedium \
-    GesturalNavigationOverlayHidden
+    GesturalNavigationOverlayHidden \
+    NavigationBarMode2ButtonOverlay
 
-# Navbar styles
-PRODUCT_PACKAGES += \
-    NavbarAndroidOverlay \
-	NavbarAsusOverlay \
-	NavbarDoraOverlay \
-    NavbarMotoOverlay \
-    NavbarNexusOverlay \
-    NavbarOldOverlay \
-    NavbarOnePlusOverlay \
-    NavbarOneUiOverlay \
-    NavbarSammyOverlay \
-    NavbarTecnoCamonOverlay
-
-# Signal / WiFi Icons
-PRODUCT_PACKAGES += \
-	AcherusWiFiOverlay \
-	AcherusSignalOverlay \
-	AquariumSignalOverlay \
-	BarsSignalOverlay \
-	BarsWiFiOverlay \
-	DeepSignalOverlay \
-	DoraSignalOverlay \
-	DoraWiFiOverlay \
-	GradiconSignalOverlay \
-	GradiconWiFiOverlay \
-	HuaweiSignalOverlay \
-	IosSignalOverlay \
-	InsideSignalOverlay \
-	InsideWiFiOverlay \
-	NothingDotSignalOverlay \
-	NothingDotWiFiOverlay \
-	OutlineWiFiOverlay \
-	OutlineSignalOverlay \
-	PillsSignalOverlay \
-	PavlovaWiFiOverlay \
-	PUISignalOverlay \
-	RoundSignalOverlay \
-	RoundWiFiOverlay \
-	SneakySignalOverlay \
-	SneakyWiFiOverlay \
-	StrokeSignalOverlay \
-	StrokeWiFiOverlay \
-	WavySignalOverlay \
-	WavyWiFiOverlay \
-	WeedWiFiOverlay \
-	XperiaSignalOverlay \
-	XperiaWiFiOverlay \
-	ZigZagSignalOverlay \
-	ZigZagWiFiOverlay \
-	ForlornWiFiOverlay \
-	AuroraSignalOverlay \
-	ForlornSignalOverlay \
-	PlumpySignalOverlay \
-	AuroraWiFiOverlay \
-	PlumpyWiFiOverlay \
-	FaintUISignalOverlay \
-	FaintUIWiFiOverlay
-
-# Themes
-PRODUCT_PACKAGES += \
-    QSOutline \
-    QSTwoToneAccent \
-    QSTwoToneAccentTrans \
-    QSShaded \
-    QSCyberPunk \
-    QSNeumorph \
-    QSReflected \
-    QSSurround \
-    QSThin
-
-# Lockscreen date fonts
-PRODUCT_PACKAGES += \
-    DateFontAlienLeagueOverlay \
-    DateFontBalticBoddenOverlay \
-    DateFontBalticStormOverlay \
-    DateFontBigNoodleTiltingOverlay \
-    DateFontMXWasgardOverlay \
-    DateFontProdeltCoOverlay \
-    DateFontRoadRageOverlay \
-    DateFontTourneyMediumOverlay \
-    DateFontZeroFourOverlay \
-    DateFontCatOverlay \
-    DateFontConcentrateOverlay \
-    DateFontKarmaticArcadeOverlay \
-    DateLetteraOverlay \
-    DateFontLiquidCrystalOverlay \
-    DateFontAccuratistOverlay \
-    DateFontApiceOverlay \
-    DateFontAudimatOverlay \
-    DateFontBariolOverlay \
-    DateFontCoconOverlay \
-    DateFontComfortaaOverlay \
-    DateFontComicSansOverlay \
-    DateFontCoolstoryOverlay \
-    DateFontExotwoOverlay \
-    DateFontEvolveSansOverlay \
-    DateFontFluidSansOverlay \
-    DateFontGoogleSansOverlay \
-    DateFontGeometosOverlay \
-    DateFontHarmonySansOverlay \
-    DateFontJTLeonorOverlay \
-    DateFontLinotteOverlay \
-    DateFontMiSansOverlay \
-    DateFontNokiaPureOverlay \
-    DateFontNothingDotHeadlineOverlay \
-    DateFontOneplusSansOverlay \
-    DateFontOneplusSlateOverlay \
-    DateFontOppoSansOverlay \
-    DateFontProductSansVHOverlay \
-    DateFontRobotoCondensedOverlay \
-    DateFontRosemaryOverlay \
-    DateFontRubikOverlay \
-    DateFontSanFranciscoDisplayProSourceOverlay \
-    DateFontSamsungOneOverlay \
-    DateFontSimpleDaySourceOverlay \
-    DateFontSonySketchOverlay \
-    DateFontVG5000Overlay
-
-# Settings Themes
-PRODUCT_PACKAGES += \
-    AOSPSettingsOverlay \
-    ArcSettingsOverlay \
-    CardSettingsOverlay \
-    MaterialSettingsOverlay \
-    RUISettingsOverlay
-
-# QS UI Style
-PRODUCT_PACKAGES += \
-    A11QSUI \
-    ReevaluateSysUIOverlay
-
-# Volume Styles
-PRODUCT_PACKAGES += \
-    VolumeDoubleLayer \
-    VolumeGradient \
-    VolumeNeumorph \
-    VolumeNeumorphOutline \
-    VolumeOutline \
-    VolumeShadedLayer
 
 # Lineage
 PRODUCT_PACKAGES += \
     LineageNavigationBarNoHint \
     LineageBlackTheme
 
-ifeq ($(TARGET_HAS_UDFPS),true)
-PRODUCT_PACKAGES += \
-    UdfpsIcons \
-    UdfpsAnimations
-endif
-
 # Include {Lato,Rubik} fonts
 $(call inherit-product-if-exists, external/google-fonts/lato/fonts.mk)
 $(call inherit-product-if-exists, external/google-fonts/rubik/fonts.mk)
 
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,vendor/addons/prebuilt/product/fonts,$(TARGET_COPY_OUT_PRODUCT)/fonts)
+    $(call find-copy-subdir-files,*,packages/overlays/LMODroid/prebuilt/product/fonts,$(TARGET_COPY_OUT_PRODUCT)/fonts)
